@@ -1,0 +1,77 @@
+[
+  {
+    "op": "core/recon",
+    "description": "Reconcile cells in column Authors to type /people/person",
+    "columnName": "Authors",
+    "config": {
+      "mode": "standard-service",
+      "service": "http://refine.codefork.com/reconcile/orcid",
+      "identifierSpace": "http://xmlns.com/foaf/0.1/",
+      "schemaSpace": "http://rdf.freebase.com/ns/type.object.id",
+      "type": {
+        "id": "/people/person",
+        "name": "Person"
+      },
+      "autoMatch": true,
+      "columnDetails": [],
+      "limit": 0
+    },
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Society of Pharmaceutical Technocrats",
+                "l": "Society of Pharmaceutical Technocrats"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "Publisher",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Publisher"
+        }
+      ]
+    }
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column Date using expression grel:value.toString(\"dd MMMM yyyy\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "omitError": false,
+          "expression": "value",
+          "selectBlank": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Society of Pharmaceutical Technocrats",
+                "l": "Society of Pharmaceutical Technocrats"
+              }
+            }
+          ],
+          "selectError": false,
+          "invert": false,
+          "name": "Publisher",
+          "omitBlank": false,
+          "type": "list",
+          "columnName": "Publisher"
+        }
+      ]
+    },
+    "columnName": "Date",
+    "expression": "grel:value.toString(\"dd MMMM yyyy\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  }
+]
